@@ -1,6 +1,25 @@
 
 
 
+add_map_strategy(MAP_TYPE_CITY, function (context) 
+
+		context:SetMapStrategy(MAP_GENERATOR_TYPE_DUNGEON)
+		context:SetMapSize(50, 50)
+		context:SetTerrainTiles("7296","6272")
+
+		return context;
+end)
+
+add_map_strategy(MAP_TYPE_DUNGEON, function (context) 
+
+		context:SetMapStrategy(MAP_GENERATOR_TYPE_DUNGEON)
+		context:SetMapSize(50, 50)
+		context:SetTerrainTiles("7296","2")
+
+		return context;
+end)
+
+
 -- Example of map generator
 add_map_generator(MAP_TYPE_CITY, function (context)
 	
@@ -19,6 +38,15 @@ add_map_generator(MAP_TYPE_CITY, function (context)
 	return context
 end)
 
+
+
+add_map_generator(MAP_TYPE_DUNGEON, function (context)
+	
+
+
+
+	return context
+end)
 
 
 

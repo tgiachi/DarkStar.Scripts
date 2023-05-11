@@ -17,12 +17,8 @@ maps:
     height: 1000
   cities:
     num: 3
-    width: 30
-    height: 30
   dungeons:
     num: 15
-    width: 50
-    height: 50
 experimental:
   compiler:
     enable_c_sharp_compiler: false
