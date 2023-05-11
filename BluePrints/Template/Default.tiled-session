@@ -1,0 +1,35 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Houses.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "C:/Users/squid/OneDrive/darksun_server/Assets/TileSets/Tangaria/Tangaria.tsx": {
+            "scaleInDock": 1
+        },
+        "Houses.tmx": {
+            "scale": 3,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 296.83333333333337,
+                "y": 183.16666666666666
+            }
+        }
+    },
+    "last.externalTilesetPath": "C:/Users/squid/OneDrive/darksun_server/Assets/TileSets/Tangaria",
+    "map.height": 40,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 40,
+    "openFiles": [
+        "Houses.tmx"
+    ],
+    "project": "Default.tiled-project",
+    "recentFiles": [
+        "Houses.tmx"
+    ],
+    "tileset.lastUsedFilter": "File Tileset Tiled (*.tsx *.xml)"
+}

@@ -1,0 +1,2 @@
+Name;Description;Weight;TileName;Category;Type;EquipLocation;ItemRarity;SellDice;BuyDice;Attack;Defense;Speed;MinLevel
+Tomato;An delicius tomato;1;*Tomato_*;Food;Food;None;Common;1d1;1d1;0;0;0;1

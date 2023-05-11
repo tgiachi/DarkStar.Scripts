@@ -1,0 +1,2 @@
+Name;Description;TileType;Strength;Dexterity;Intelligence;Luck;MaxHealth;MaxMana;Health;Mana;IsVisible
+Humans;Humans of earth;2332;0;0;+30;0;20;100;100;10;True

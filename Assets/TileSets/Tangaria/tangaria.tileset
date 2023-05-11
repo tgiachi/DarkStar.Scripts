@@ -1,0 +1,7 @@
+{
+	"Name": "Tangaria",
+	"Source": "tangaria.png",
+	"TileWidth": 32,
+	"TileHeight": 32,
+	"TileSetMapFileName": "tangaria.csv"
+}
