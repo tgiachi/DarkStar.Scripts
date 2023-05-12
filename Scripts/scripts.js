@@ -63,9 +63,6 @@ add_game_object_action("Internal_spawner_gold", (context) => {
 add_scheduled_game_object_action("Internal_spawner_silver", 300, (context) => {
     log("OK");
 });
-add_city_map_generator((context) => {
-    log("add_city_map_generator", null);
-});
 add_map_strategy(MAP_TYPE_CITY, (context) => {
     context.SetMapStrategy(MAP_GENERATOR_TYPE_CELLULAR_AUTOMATA);
     context.SetMapSize(50, 50);
