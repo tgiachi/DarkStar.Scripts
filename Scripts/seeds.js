@@ -1,1 +1,0 @@
-add_game_object_type("Prop_Chest")
