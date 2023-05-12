@@ -1059,7 +1059,7 @@ declare function random_list(
 
 declare function log(
   text: string,
-  args: any,
+  args?: any,
 ): void;
 
 
@@ -1094,9 +1094,7 @@ declare function set_server_name(
  * @returns void
  */
 
-declare function add_game_object_type(
-  type: any,
-): void;
+declare function add_game_object_type(...params: string[]): void;
 
 
 /**
