@@ -8,8 +8,7 @@ set_player_initial_gold(100);
 on_engine_ready_event(() => {
     log("Engine is ready from JS");
 });
-add_game_object_type("Prop_Chest", "Internal_spawner_gold", "Internal_spawner_silver", "Prop_Mushroom", "Internal_World_Spawner");
-add_game_object("Mushroom", "Delicius mushroom", "*Mushroom*", "Prop_Mushroom", "");
+add_game_object_type("Prop_Chest", "Internal_spawner_gold", "Internal_spawner_silver", "Internal_World_Spawner");
 add_game_object("Internal_spawner_gold", "Internal_spawner_gold", "3", "Internal_spawner_gold", "");
 add_game_object("Internal_spawner_silver", "Internal_spawner_silver", "4", "Internal_spawner_silver", "");
 add_game_object_action("Internal_spawner_gold", (context) => {
@@ -40,25 +39,29 @@ add_ai_brain_by_type("Human", "Mushroom_Finder", (context) => {
     context.SendNormalMessageAsync("I'm looking for mushrooms!");
     context.MoveRandomDirection();
     if (!context.Data) {
-        context.Data = {
+        context.LogInfo("Initializing state for {Name}", context.NpcEntity.Name);
+        context.InitializeData({
             current_step: 0,
             path: context.CreateListOfPoints()
-        };
+        });
     }
     if (context.Data.path.length > 0) {
         if (context.Data.current_step >= context.Data.path.length) {
             context.LogInfo("Mmmhh yummy mushroom!");
             context.SendYellMessageAsync("I've found a yummy mushroom!");
             context.EnqueueObjectActionInCurrentLocation();
-            context.Data.path = context.CreateListOfPoints();
-            context.Data.current_step = 0;
+            context.InitializeData({
+                current_step: 0,
+                path: context.CreateListOfPoints()
+            });
             return context;
         }
         const next_step = context.Data.path[context.Data.current_step];
         const diff_steps = context.Data.path.length - context.Data.current_step;
         context.LogInfo("I'm {Name} and i'm moving to {NewPos} - Step remaining: {StepRemain}", context.NpcEntity.Name, next_step, diff_steps);
         context.MoveToPosition(next_step);
-        context.Data.current_step = context.Data.current_step + 1;
+        context.Data.current_step++;
+        return context;
     }
     const mushrooms = context.GetGameObjectsInRangeByName(GAMEOBJECT_PROP_MUSHROOM);
     if (mushrooms.Count == 0) {
@@ -71,6 +74,12 @@ add_ai_brain_by_type("Human", "Mushroom_Finder", (context) => {
         context.Data.path = context.GetPathToPosition(random_mushroom.PointPosition());
         context.Data.current_step = 0;
     }
+});
+add_game_object_type("Prop_Mushroom");
+add_game_object("Mushroom", "Delicius mushroom", "*Mushroom*", "Prop_Mushroom", "");
+add_game_object_action("Prop_Mushroom", (context) => {
+    log("Bye bye mushroom!");
+    context.RemoveMySelf();
 });
 add_map_strategy(MAP_TYPE_CITY, (context) => {
     context.SetMapStrategy(MAP_GENERATOR_TYPE_CELLULAR_AUTOMATA);

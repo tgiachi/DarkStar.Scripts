@@ -13,18 +13,24 @@ add_ai_brain_by_type("Human", "Mushroom_Finder", (context) => {
     context.MoveRandomDirection();
 
     if (!context.Data) {
-        context.Data = {
+        context.LogInfo("Initializing state for {Name}", context.NpcEntity.Name)
+
+        context.InitializeData({
             current_step: 0,
             path:  context.CreateListOfPoints()
-        }
+        })
+
     }
     if (context.Data.path.length > 0) { 
         if (context.Data.current_step >= context.Data.path.length) {
             context.LogInfo("Mmmhh yummy mushroom!");
             context.SendYellMessageAsync("I've found a yummy mushroom!");
             context.EnqueueObjectActionInCurrentLocation();
-            context.Data.path = context.CreateListOfPoints()
-            context.Data.current_step = 0;
+            context.InitializeData({
+                current_step: 0,
+                path:  context.CreateListOfPoints()
+            })
+
             return context;
         }
         const next_step = context.Data.path[context.Data.current_step];
@@ -36,8 +42,8 @@ add_ai_brain_by_type("Human", "Mushroom_Finder", (context) => {
             diff_steps
             );
         context.MoveToPosition(next_step)
-        context.Data.current_step = context.Data.current_step + 1;
-        
+        context.Data.current_step++ 
+        return context;
     }
     const mushrooms = context.GetGameObjectsInRangeByName(GAMEOBJECT_PROP_MUSHROOM)
 
