@@ -2,6 +2,7 @@
  * This file contains all the brains for the AI.
  */
 
+add_npc_type("Human", "Mushroom_Finder", "*Farmer_*")
 
 add_ai_brain_by_type("Human", "Mushroom_Finder", (context) => {
     context.LogInfo(

@@ -1108,6 +1108,7 @@ declare function add_game_object_type(...params: string[]): void;
 declare function add_npc_type(
   type: string,
   subType: string,
+  tile: string
 ): any;
 
 

@@ -19,14 +19,22 @@ add_scheduled_game_object_action("Internal_spawner_silver", 300, (context) => {
     log("OK");
 });
 add_text_content("PLAYER_WELCOME_SCROLL", "Welcome to the game! ${PLAYER_NAME}");
+add_npc_type("Animal", "Cat", "*Cat_*");
+add_npc_type("Animal", "Dog", "*Dog_*");
 add_ai_brain_by_type("Animal", "Cat", (context) => {
     context.LogInfo("Meowww");
     context.SendNormalMessageAsync("Meowww");
     context.MoveRandomDirection();
 });
+add_ai_brain_by_type("Animal", "Dog", (context) => {
+    context.LogInfo("Woof!");
+    context.SendNormalMessageAsync("Woof!");
+    context.MoveRandomDirection();
+});
 /**
  * This file contains all the brains for the AI.
  */
+add_npc_type("Human", "Mushroom_Finder", "*Farmer_*");
 add_ai_brain_by_type("Human", "Mushroom_Finder", (context) => {
     context.LogInfo("I'm {Name} and I'm looking for mushrooms!", context.NpcEntity.Name);
     context.SendNormalMessageAsync("I'm looking for mushrooms!");
